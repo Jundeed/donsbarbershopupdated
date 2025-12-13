@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don's Barber Shop | Omaha, NE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #202124;
+            --accent: #fbbc04;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-main {
+            font-size: 24px;
+        }
+
+        .logo-sub {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .highlight-box {
+            background-color: rgba(26, 115, 232, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .highlight-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .highlight-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            padding: 100px 0 60px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* Services Page */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .service-card.animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 25px;
+        }
+
+        .service-card h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* Coming Soon Placeholder */
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .coming-soon i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Hours & Location Page */
+        .hours-location-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .hours-card, .location-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hours-card.animated, .location-card.animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .hours-card h3, .location-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+        }
+
+        .hours-table .day {
+            font-weight: 600;
+        }
+
+        .hours-table .time {
+            text-align: right;
+            color: var(--gray);
+        }
+
+        .closed {
+            color: #d93025;
+        }
+
+        .location-details {
+            margin-bottom: 25px;
+        }
+
+        .location-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .location-details i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f5 25%, #e0e0e0 25%, #e0e0e0 50%, #f5f5f5 50%, #f5f5f5 75%, #e0e0e0 75%, #e0e0e0);
+            background-size: 20px 20px;
+        }
+
+        /* Barbers Page */
+        .barbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .barber-card {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .barber-card.animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .barber-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .barber-card:hover .barber-img {
+            transform: scale(1.05);
+        }
+
+        .barber-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .barber-card p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .barber-card .phone {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .barber-card .phone:hover {
+            background-color: var(--primary);
+        }
+
+        /* Gallery Page */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .gallery-item.animated {
+            animation: zoomIn 0.6s ease forwards;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Page */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .contact-info.animated {
+            animation: fadeInLeft 0.6s ease forwards;
+        }
+
+        .contact-form {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .contact-form.animated {
+            animation: fadeInRight 0.6s ease forwards;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: var(--gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Walk-in Info Banner */
+        .walkin-banner {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(26, 115, 232, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .page {
+                padding: 80px 0 40px;
+            }
+            
+            .highlight-box {
+                padding: 15px;
+            }
+            
+            .highlight-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" data-page="home">
+                <i class="fas fa-cut"></i>
+                <div class="logo-text">
+                    <span class="logo-main">Don's Barber Shop</span>
+                    <span class="logo-sub">Omaha, NE</span>
+                </div>
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="hours">Hours & Location</a></li>
+                <li><a href="#" class="nav-link" data-page="barbers">Our Barbers</a></li>
+                <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section (Home Page) -->
+    <section class="hero" id="home-page">
+        <div class="container hero-content">
+            <h1>Don's Barber Shop</h1>
+            <p>Professional haircuts in Omaha, NE. Appointments and walk-ins welcome. Family-friendly with comfortable restroom facilities.</p>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-star"></i> Shop Highlights</h3>
+                <div class="highlight-items">
+                    <div class="highlight-item">Good for kids</div>
+                    <div class="highlight-item">Restroom available</div>
+                    <div class="highlight-item">Walk-ins welcome</div>
+                    <div class="highlight-item">Appointments available</div>
+                </div>
+            </div>
+            
+            <a href="tel:4029339777" class="btn"><i class="fas fa-phone"></i> Call Now: (402) 933-9777</a>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section class="page container" id="services-page">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        
+        <div class="walkin-banner">
+            <h3><i class="fas fa-walking"></i> Walk-ins Welcome! No appointment needed.</h3>
+        </div>
+        
+        <div class="coming-soon">
+            <i class="fas fa-tools"></i>
+            <h3>Services Information Coming Soon</h3>
+            <p>We're currently updating our services menu with our latest offerings and pricing. Please visit us at the shop or call for current service information.</p>
+            <a href="tel:4029339777" class="btn" style="margin-top: 20px;"><i class="fas fa-phone"></i> Call for Service Info</a>
+        </div>
+    </section>
+
+    <!-- Hours & Location Page -->
+    <section class="page container" id="hours-page">
+        <div class="section-title">
+            <h2>Hours & Location</h2>
+        </div>
+        
+        <div class="hours-location-container">
+            <div class="hours-card">
+                <h3><i class="far fa-clock"></i> Business Hours</h3>
+                <table class="hours-table">
+                    <tr>
+                        <td class="day">Sunday</td>
+                        <td class="time closed">Closed</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Monday</td>
+                        <td class="time closed">Closed</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Tuesday</td>
+                        <td class="time">10:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Wednesday</td>
+                        <td class="time">10:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Thursday</td>
+                        <td class="time">10:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Friday</td>
+                        <td class="time">10:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td class="day">Saturday</td>
+                        <td class="time">10:00 AM - 6:00 PM</td>
+                    </tr>
+                </table>
+                
+                <div class="walkin-banner" style="margin-top: 30px; background-color: var(--accent);">
+                    <h4><i class="fas fa-info-circle"></i> Walk-ins welcome during business hours</h4>
+                </div>
+            </div>
+            
+            <div class="location-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+                
+                <div class="location-details">
+                    <p>
+                        <i class="fas fa-map-pin"></i>
+                        <strong>Address:</strong> 4001 Ames Ave, Omaha, NE 68111
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <strong>Phone:</strong> <a href="tel:4029339777">(402) 933-9777</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-child"></i>
+                        <strong>Highlights:</strong> Good for kids · Restroom available
+                    </p>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+                        <h3>Don's Barber Shop</h3>
+                        <p>4001 Ames Ave, Omaha, NE 68111</p>
+                        <a href="https://maps.google.com/?q=4001+Ames+Ave,+Omaha,+NE+68111" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">Open in Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Page -->
+    <section class="page container" id="barbers-page">
+        <div class="section-title">
+            <h2>Meet Our Barbers</h2>
+        </div>
+        
+        <div class="coming-soon">
+            <i class="fas fa-users"></i>
+            <h3>Meet Our Team - Coming Soon</h3>
+            <p>We're currently gathering information about our talented barbers. Check back soon to meet the team at Don's Barber Shop!</p>
+            <p>In the meantime, come visit us at the shop to meet our friendly barbers in person.</p>
+            <a href="#" class="btn" style="margin-top: 20px;" data-page="hours"><i class="fas fa-map-marker-alt"></i> Visit Our Location</a>
+        </div>
+    </section>
+
+    <!-- Gallery Page -->
+    <section class="page container" id="gallery-page">
+        <div class="section-title">
+            <h2>Our Shop Gallery</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4001+Ames+Ave,+Omaha,+NE+68111&fov=80&heading=70&pitch=0&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Street View of Don's Barber Shop">
+            </div>
+            <div class="gallery-item">
+                <img src="https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4001+Ames+Ave,+Omaha,+NE+68111&fov=80&heading=150&pitch=0&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Another angle of Don's Barber Shop">
+            </div>
+            <div class="gallery-item">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=4001+Ames+Ave,Omaha,NE,68111&zoom=16&size=600x400&scale=2&markers=color:red%7Clabel:S%7C4001+Ames+Ave,Omaha,NE,68111&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Map Location of Don's Barber Shop">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540337706094-da0b4a5b2f6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Shop Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Professional Haircut">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber at Work">
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <p><em>Actual shop interior photos coming soon!</em></p>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="page container" id="contact-page">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+        </div>
+        
+        <div class="walkin-banner">
+            <h3><i class="fas fa-walking"></i> Walk-ins welcome during business hours! No appointment needed.</h3>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Our Location</h3>
+                        <p>4001 Ames Ave, Omaha, NE 68111</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:4029339777">(402) 933-9777</a></p>
+                        <p><em>Call for appointments or inquiries</em></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Business Hours</h3>
+                        <p>Tuesday - Saturday: 10:00 AM - 6:00 PM</p>
+                        <p>Sunday & Monday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Shop Highlights</h3>
+                        <p>• Good for kids</p>
+                        <p>• Restroom available</p>
+                        <p>• Walk-ins welcome</p>
+                        <p>• Appointments available</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Appointment Request (Optional)</h3>
+                <p><em>Walk-ins are always welcome, but you can request an appointment if preferred.</em></p>
+                
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" class="form-control">
+                            <option value="">Choose a service (optional)</option>
+                            <option value="haircut">Classic Haircut</option>
+                            <option value="beard">Beard Trim & Shape</option>
+                            <option value="shave">Hot Towel Shave</option>
+                            <option value="kids">Kids Haircut</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferred-day">Preferred Day</label>
+                        <select id="preferred-day" class="form-control">
+                            <option value="">Any day</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Notes</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Any special requests or notes"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Appointment Request</button>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);"><em>We'll call to confirm your appointment.</em></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Don's Barber Shop</h3>
+                    <p>Professional haircuts in Omaha, NE. Appointments and walk-ins welcome. Family-friendly with comfortable restroom facilities.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="
