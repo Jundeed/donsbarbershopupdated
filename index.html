@@ -962,27 +962,39 @@
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4001+Ames+Ave,+Omaha,+NE+68111&fov=80&heading=70&pitch=0&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Street View of Don's Barber Shop">
+                <img src="https://images.unsplash.com/photo-1621605815975-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Shop Interior">
             </div>
             <div class="gallery-item">
-                <img src="https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4001+Ames+Ave,+Omaha,+NE+68111&fov=80&heading=150&pitch=0&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Another angle of Don's Barber Shop">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber at Work">
             </div>
             <div class="gallery-item">
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=4001+Ames+Ave,Omaha,NE,68111&zoom=16&size=600x400&scale=2&markers=color:red%7Clabel:S%7C4001+Ames+Ave,Omaha,NE,68111&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" alt="Map Location of Don's Barber Shop">
+                <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Tools">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1540337706094-da0b4a5b2f6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Shop Interior">
+                <div class="map-placeholder" style="height: 100%;">
+                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>Shop Photos Coming Soon</h3>
+                    <p>Real photos of Don's Barber Shop will be here soon!</p>
+                </div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Professional Haircut">
+                <div class="map-placeholder" style="height: 100%;">
+                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>More Photos Coming</h3>
+                    <p>Check back for actual shop photos</p>
+                </div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber at Work">
+                <div class="map-placeholder" style="height: 100%;">
+                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>Gallery Updates</h3>
+                    <p>Photos of our actual shop coming soon!</p>
+                </div>
             </div>
         </div>
         
         <div style="text-align: center; margin-top: 40px;">
-            <p><em>Actual shop interior photos coming soon!</em></p>
+            <p><em>Actual shop photos coming soon! We'll update this gallery with real photos of Don's Barber Shop.</em></p>
         </div>
     </section>
 
@@ -1050,24 +1062,18 @@
                 
                 <form id="appointmentForm">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
+                        <label for="name">Full Name *</label>
                         <input type="text" id="name" class="form-control" placeholder="Your Name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone">Phone Number *</label>
                         <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="service">Select Service</label>
-                        <select id="service" class="form-control">
-                            <option value="">Choose a service (optional)</option>
-                            <option value="haircut">Classic Haircut</option>
-                            <option value="beard">Beard Trim & Shape</option>
-                            <option value="shave">Hot Towel Shave</option>
-                            <option value="kids">Kids Haircut</option>
-                        </select>
+                        <label for="service-description">Describe What You Need *</label>
+                        <input type="text" id="service-description" class="form-control" placeholder="Example: Men's haircut, beard trim, kids haircut, etc." required>
                     </div>
                     
                     <div class="form-group">
@@ -1080,6 +1086,11 @@
                             <option value="friday">Friday</option>
                             <option value="saturday">Saturday</option>
                         </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferred-time">Preferred Time (Optional)</label>
+                        <input type="text" id="preferred-time" class="form-control" placeholder="Example: Morning, Afternoon, 2:00 PM, etc.">
                     </div>
                     
                     <div class="form-group">
@@ -1129,16 +1140,19 @@
             </div>
             
             <div class="copyright">
-                &copy; 2023 Don's Barber Shop. All rights reserved. | Walk-ins welcome during business hours.
+                &copy; <span id="currentYear"></span> Don's Barber Shop. All rights reserved. | Walk-ins welcome during business hours.
             </div>
         </div>
     </footer>
 
-    <!-- SIMPLE WORKING JAVASCRIPT - FIXED -->
+    <!-- FIXED JAVASCRIPT -->
     <script>
         // Wait for page to load
         document.addEventListener('DOMContentLoaded', function() {
             console.log("Website loaded successfully!");
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
             
             // Get elements
             const mobileToggle = document.getElementById('mobileToggle');
@@ -1238,7 +1252,12 @@
             if (appointmentForm) {
                 appointmentForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Thank you! Your appointment request has been submitted. We will call you shortly to confirm. Remember, walk-ins are also welcome!');
+                    
+                    // Get form data
+                    const name = document.getElementById('name').value;
+                    const service = document.getElementById('service-description').value;
+                    
+                    alert(`Thank you ${name}! Your appointment request for "${service}" has been submitted. We will call you shortly to confirm. Remember, walk-ins are also welcome!`);
                     appointmentForm.reset();
                 });
             }
@@ -1263,6 +1282,9 @@
             });
             
             console.log("Navigation ready! Try clicking the links.");
+            
+            // Fix for computer: Force initial state
+            showPage('home');
         });
     </script>
 </body>
