@@ -461,21 +461,6 @@
             margin-bottom: 15px;
         }
 
-        .barber-card .phone {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .barber-card .phone:hover {
-            background-color: var(--primary);
-        }
-
         /* Gallery Page */
         .gallery-grid {
             display: grid;
@@ -945,12 +930,24 @@
             <h2>Meet Our Barbers</h2>
         </div>
         
-        <div class="coming-soon">
-            <i class="fas fa-users"></i>
-            <h3>Meet Our Team - Coming Soon</h3>
-            <p>We're currently gathering information about our talented barbers. Check back soon to meet the team at Don's Barber Shop!</p>
-            <p>In the meantime, come visit us at the shop to meet our friendly barbers in person.</p>
-            <a href="#" class="btn visit-location-btn" style="margin-top: 20px;"><i class="fas fa-map-marker-alt"></i> Visit Our Location</a>
+        <div class="barbers-grid">
+            <div class="barber-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Tim" class="barber-img">
+                <h3>Tim</h3>
+                <p>Barber</p>
+            </div>
+            
+            <div class="barber-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Dominique" class="barber-img">
+                <h3>Dominique</h3>
+                <p>Barber</p>
+            </div>
+            
+            <div class="barber-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Don" class="barber-img">
+                <h3>Don</h3>
+                <p>Owner/Barber</p>
+            </div>
         </div>
     </section>
 
@@ -961,40 +958,39 @@
         </div>
         
         <div class="gallery-grid">
+            <!-- Image 1: Shop exterior -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1621605815975-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Shop Interior">
+                <img src="https://i.imgur.com/CeCRhmw.jpeg" alt="Don's Barber Shop Exterior - Clean and professional storefront">
             </div>
+            
+            <!-- Image 2: Interior view -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber at Work">
+                <img src="https://i.imgur.com/1p04K3P.jpeg" alt="Don's Barber Shop Interior - Spacious and well-lit barber area">
             </div>
+            
+            <!-- Image 3: Barber station -->
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barber Tools">
+                <img src="https://i.imgur.com/cSxruUa.jpeg" alt="Professional Barber Station - Modern setup with quality tools">
             </div>
+            
+            <!-- Image 4: Seating area -->
             <div class="gallery-item">
-                <div class="map-placeholder" style="height: 100%;">
-                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Shop Photos Coming Soon</h3>
-                    <p>Real photos of Don's Barber Shop will be here soon!</p>
-                </div>
+                <img src="https://i.imgur.com/qMQXl8U.jpeg" alt="Comfortable Waiting Area - Clean and inviting seating">
             </div>
+            
+            <!-- Image 5: Additional view -->
             <div class="gallery-item">
-                <div class="map-placeholder" style="height: 100%;">
-                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>More Photos Coming</h3>
-                    <p>Check back for actual shop photos</p>
-                </div>
+                <img src="https://i.imgur.com/ObWEMZr.jpeg" alt="Don's Barber Shop - Additional interior view showing shop layout">
             </div>
+            
+            <!-- Image 6: Shop details -->
             <div class="gallery-item">
-                <div class="map-placeholder" style="height: 100%;">
-                    <i class="fas fa-camera" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
-                    <h3>Gallery Updates</h3>
-                    <p>Photos of our actual shop coming soon!</p>
-                </div>
+                <img src="https://i.imgur.com/YMqHPq2.jpeg" alt="Shop Details - Professional barber equipment and decor">
             </div>
         </div>
         
         <div style="text-align: center; margin-top: 40px;">
-            <p><em>Actual shop photos coming soon! We'll update this gallery with real photos of Don's Barber Shop.</em></p>
+            <p><em>Visit us to experience our professional service in person!</em></p>
         </div>
     </section>
 
@@ -1145,11 +1141,11 @@
         </div>
     </footer>
 
-    <!-- FIXED JAVASCRIPT -->
+    <!-- FINAL JAVASCRIPT -->
     <script>
         // Wait for page to load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log("Website loaded successfully!");
+            console.log("Don's Barber Shop website loaded successfully!");
             
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -1162,7 +1158,6 @@
             const pages = document.querySelectorAll('.page');
             const heroSection = document.getElementById('home-page');
             const logo = document.querySelector('.logo');
-            const visitLocationBtn = document.querySelector('.visit-location-btn');
             
             // Mobile menu toggle
             if (mobileToggle) {
@@ -1239,14 +1234,6 @@
                 showPage('home');
             });
             
-            // Visit location button
-            if (visitLocationBtn) {
-                visitLocationBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showPage('hours');
-                });
-            }
-            
             // Appointment form
             const appointmentForm = document.getElementById('appointmentForm');
             if (appointmentForm) {
@@ -1281,10 +1268,10 @@
                 if (el) observer.observe(el);
             });
             
-            console.log("Navigation ready! Try clicking the links.");
-            
-            // Fix for computer: Force initial state
+            // Initialize to home page
             showPage('home');
+            
+            console.log("Website ready! All navigation working.");
         });
     </script>
 </body>
